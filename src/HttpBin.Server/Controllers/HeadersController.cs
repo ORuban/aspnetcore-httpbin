@@ -1,3 +1,4 @@
+using HttpBin.Server.Extensions;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -29,7 +30,7 @@ namespace HttpBin.Server.Controllers
             return new JsonResult(
                 new
                 {
-                    headers = HttpContext.Request.Headers
+                    headers = HttpContext.Request.Headers.ToJObject()
                 }, new JsonSerializerSettings() { Formatting = Formatting.Indented });
         }
     }
