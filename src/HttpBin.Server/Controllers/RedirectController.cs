@@ -14,7 +14,7 @@ namespace HttpBin.Server.Controllers
         [HttpGet("/temporaryredirect-to")]
         public ActionResult TemporaryRedirectTo([FromQuery] string url)
         {
-            HttpContext.Response.Headers.Add(HeaderNames.Location, url);
+            Response.Headers.Add(HeaderNames.Location, url);
             return new StatusCodeResult(307);
         }
     }

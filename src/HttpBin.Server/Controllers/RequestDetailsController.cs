@@ -10,15 +10,13 @@ namespace HttpBin.Server.Controllers
         [HttpGet("/get")]
         public IActionResult Get()
         {
-            var request = HttpContext.Request;
-            
-            string requestUrl = $"{request.Scheme}://{request.Host}{request.Path}{request.QueryString}";
+            string requestUrl = $"{Request.Scheme}://{Request.Host}{Request.Path}{Request.QueryString}";
 
             var result = new {
-                args = request.Query.ToJObject(),
-                headers = request.Headers.ToJObject(),
+                args = Request.Query.ToJObject(),
+                headers = Request.Headers.ToJObject(),
                 url = requestUrl,
-                cookies = request.Cookies.ToJObject()
+                cookies = Request.Cookies.ToJObject()
             };
 
             return new JsonResult(result, new JsonSerializerSettings() { Formatting = Formatting.Indented });

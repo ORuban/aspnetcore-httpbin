@@ -10,7 +10,7 @@ namespace HttpBin.Server.Controllers
         [HttpGet("/user-agent")]
         public IActionResult UserAgent()
         {
-            var headers = HttpContext.Request.Headers;
+            var headers = Request.Headers;
             string userAgent = string.Empty;
 
             if (headers.ContainsKey("User-Agent"))
@@ -30,7 +30,7 @@ namespace HttpBin.Server.Controllers
             return new JsonResult(
                 new
                 {
-                    headers = HttpContext.Request.Headers.ToJObject()
+                    headers = Request.Headers.ToJObject()
                 }, new JsonSerializerSettings() { Formatting = Formatting.Indented });
         }
     }
