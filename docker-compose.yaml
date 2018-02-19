@@ -1,0 +1,8 @@
+version: '3'
+services:
+  httpbin:
+    build: .
+    image: oruban/aspnetcorehttpbin
+    container_name: aspnetcorehttpbin
+    ports:
+     - "5000:5000"
